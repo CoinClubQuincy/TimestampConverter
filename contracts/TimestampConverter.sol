@@ -54,7 +54,7 @@ contract TimestampSubnetConverter is TimestampConverter{
     startDay = _startDay;
     startHour = _startHour;
     startMinute = _startMinute;
-    startSecond = 0;
+    startSecond = _startSecond;
     }
 }
 
