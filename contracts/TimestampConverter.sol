@@ -9,8 +9,8 @@ contract TimestampConverter {
     uint public startMinute = 0;
     uint public startSecond = 0;
 
-    function currentTimeStamp() public view returns (uint) {
-        return block.timestamp;
+    function currentDateTime() public view returns (uint16 year, uint8 month, uint8 day, uint8 hour, uint8 minute, uint8 second) {
+        return timestampToDateTime(block.timestamp);
     }
 
     function timestampToDateTime(uint256 timestamp) public view returns (uint16 year, uint8 month, uint8 day, uint8 hour, uint8 minute, uint8 second) {
@@ -21,6 +21,7 @@ contract TimestampConverter {
         uint256 secondsInMinute = 60;
 
         year = uint16(startYear + (timestamp / (secondsInDay * 365)));
+
         uint256 secondsInYear = year % 4 == 0 ? 31622400 : 31536000;
         uint256 secondsInThisYear = timestamp % secondsInYear;
 
